@@ -1,2 +1,2 @@
 # De Re Metallica
-A data filtering and visualization tool to map ancient metal and stone deposits, as they've been recorded in the online "gazeteer" Pleiades (https://pleiades.stoa.org).
+A data filtering and visualization tool to map ancient metal and stone deposits, as they've been recorded in the online "gazeteer" Pleiades (https://pleiades.stoa.org). This is currently an exploratory tool: it makes no claims to comprehensive or exhaustive information on the topic, in part because it is limited by the mines and sources of minerals presented by Pleiades. The word "gazeteer" is critical, then. Users confuse this with comprehensive data at their own peril.
