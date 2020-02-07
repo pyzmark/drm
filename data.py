@@ -5,18 +5,15 @@ import folium
 from pandas import ExcelWriter
 from pandas import ExcelFile
 
-pd.set_option('display.max_columns', 500)
-
 # Get the latest pleiades data
-!wget --output-document pleiades.csv.gz http://atlantides.org/downloads/pleiades/dumps/pleiades-places-latest.csv.gz
-pleid = pd.read_csv('pleiades.csv.gz', compression='infer')
+pleid = pd.read_csv('http://atlantides.org/downloads/pleiades/dumps/pleiades-places-latest.csv.gz')
 
-# Creation of a mining/metal only database: cutting nulls to allow mapping
+# Creation of a mining/metal-specific dataframe: cutting nulls to allow mapping
 metal = pleid[pleid['featureTypes'].astype(str).str.contains('mine')]
 metal = metal[(metal.description.notnull()) & (metal.timePeriods.notnull())]
 metal = metal[(metal.reprLat.notnull()) & (metal.reprLong.notnull())]
 
-# Build the map
+# Build the map, focsusing on Europe
 latitude = 36
 longitude = 18
 
@@ -25,6 +22,8 @@ edm_map = folium.Map(
     location=[latitude, longitude], zoom_start=3, tiles='Stamen Toner'
 )
 
+# function to populate the map with points and labels that include
+# information like title, time period active, etc.
 def adder(this,colour):
     resource = metal[metal['tags'].astype(str).str.contains(this)]
     sign = folium.map.FeatureGroup()
@@ -53,6 +52,7 @@ def adder(this,colour):
         )
     edm_map.add_child(sign)
 
+# Run the function for the following metals, w color
 adder('iron','red')
 adder('silver','grey')
 adder('gold','yellow')
@@ -60,4 +60,5 @@ adder('marble','blue')
 adder('copper','#995303')
 adder('tin', '#02eb41')
 
-edm_map.save(outfile='/Users/Mark/Inbox/mines_map.html')
+# Produce a map: for now an HTML file works
+edm_map.save(outfile='mines_map.html')
