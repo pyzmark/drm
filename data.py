@@ -13,13 +13,13 @@ metal = pleid[pleid['featureTypes'].astype(str).str.contains('mine')]
 metal = metal[(metal.description.notnull()) & (metal.timePeriods.notnull())]
 metal = metal[(metal.reprLat.notnull()) & (metal.reprLong.notnull())]
 
-# Build the map, focsusing on Europe
+# Build the map, focusing on Europe
 latitude = 36
 longitude = 18
 
 # Create map and display it
 edm_map = folium.Map(
-    location=[latitude, longitude], zoom_start=3, tiles='Stamen Toner'
+    location=[latitude, longitude], zoom_start=4, tiles='Stamen Toner'
 )
 
 # function to populate the map with points and labels that include
@@ -53,6 +53,7 @@ def adder(this,colour):
     edm_map.add_child(sign)
 
 # Run the function for the following metals, w color
+# Add a '#' to the start of each line to turn each one off
 adder('iron','red')
 adder('silver','grey')
 adder('gold','yellow')
