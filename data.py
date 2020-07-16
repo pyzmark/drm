@@ -1,9 +1,6 @@
 # Import the basic libraries
 import pandas as pd
-import numpy as np
 import folium
-from pandas import ExcelWriter
-from pandas import ExcelFile
 
 # Get the latest pleiades data
 pleid = pd.read_csv('http://atlantides.org/downloads/pleiades/dumps/pleiades-places-latest.csv.gz')
@@ -28,8 +25,6 @@ def adder(this,colour):
     resource = metal[metal['tags'].astype(str).str.contains(this)]
     sign = folium.map.FeatureGroup()
     resource['title'] = resource['title'].astype(str)
-    resource['title'] = resource['title'].astype(str)
-    resource['timePeriods'] = resource['timePeriods'].astype(str)
     resource['timePeriods'] = resource['timePeriods'].astype(str)
     # add pop-up text to each marker on the map
     signlatitudes = list(resource.reprLat)
@@ -51,6 +46,9 @@ def adder(this,colour):
             )
         )
     edm_map.add_child(sign)
+    sign.layer_name = this
+    
+#Intensity.layer_name = 'Shaking Intensity'
 
 # Run the function for the following metals, w color
 # Add a '#' to the start of each line to turn each one off
@@ -60,6 +58,9 @@ adder('gold','yellow')
 adder('marble','blue')
 adder('copper','#995303')
 adder('tin', '#02eb41')
+
+# add the layer control
+folium.LayerControl(collapsed=False).add_to(edm_map)
 
 # Produce a map: for now an HTML file works
 edm_map.save(outfile='mines_map.html')
