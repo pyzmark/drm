@@ -16,7 +16,7 @@ longitude = 18
 
 # Create map and display it
 edm_map = folium.Map(
-    location=[latitude, longitude], zoom_start=4, tiles='Stamen Toner'
+				location=[latitude, longitude], zoom_start=4, tiles='Stamen Toner'
 )
 
 # function to populate the map with points and labels that include
@@ -61,4 +61,4 @@ adder('tin', '#B118C8')
 folium.LayerControl(collapsed=False).add_to(edm_map)
 
 # Produce a map: for now an HTML file works
-edm_map.save(outfile='mines_map.html')
+edm_map.save(outfile='index.html')
