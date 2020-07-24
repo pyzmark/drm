@@ -16,7 +16,7 @@ longitude = 18
 
 # Create map and display it
 edm_map = folium.Map(
-				location=[latitude, longitude], zoom_start=4, tiles='Stamen Toner'
+				location=[latitude, longitude], zoom_start=4, tiles='https://stamen-tiles-{s}.a.ssl.fastly.net/toner-background/{z}/{x}/{y}{r}.png', attr='Stamen'
 )
 
 # function to populate the map with points and labels that include
