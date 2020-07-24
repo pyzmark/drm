@@ -48,16 +48,14 @@ def adder(this,colour):
     edm_map.add_child(sign)
     sign.layer_name = this
     
-#Intensity.layer_name = 'Shaking Intensity'
-
 # Run the function for the following metals, w color
 # Add a '#' to the start of each line to turn each one off
-adder('iron','red')
-adder('silver','grey')
-adder('gold','yellow')
-adder('marble','blue')
-adder('copper','#995303')
-adder('tin', '#02eb41')
+adder('iron','#FF5964')
+adder('silver','#818479')
+adder('gold','#E8AA14')
+adder('marble','#35A7FF')
+adder('copper','#23F0C7')
+adder('tin', '#B118C8')
 
 # add the layer control
 folium.LayerControl(collapsed=False).add_to(edm_map)
