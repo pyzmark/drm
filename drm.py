@@ -56,6 +56,7 @@ adder('gold','#E8AA14')
 adder('marble','#35A7FF')
 adder('copper','#23F0C7')
 adder('tin', '#B118C8')
+adder('lapis','blue')
 
 # add the layer control
 folium.LayerControl(collapsed=False).add_to(edm_map)
