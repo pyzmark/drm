@@ -16,7 +16,7 @@ longitude = 18
 
 # Create map and display it
 edm_map = folium.Map(
-				location=[latitude, longitude], zoom_start=4, tiles='https://stamen-tiles-{s}.a.ssl.fastly.net/toner-background/{z}/{x}/{y}{r}.png', attr='Stamen'
+				location=[latitude, longitude], zoom_start=4, tiles='https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', attr='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
 )
 
 # function to populate the map with points and labels that include
